@@ -12,3 +12,9 @@ export class UserType{
     @Field()
     password: string;
 }
+
+@ObjectType()
+export class UserTokenType{
+    @Field()
+    token: string;
+}
