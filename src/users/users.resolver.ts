@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { UserType, UserTokenType } from './dto/user.dto';
 import { UserInput } from './input/user.input';
 import { User, userToken } from './interface/user.interface';
+import { loginInput } from './input/login.input';
 
 @Resolver()
 export class UserResolver{
@@ -16,6 +17,10 @@ export class UserResolver{
     @Mutation(() =>UserTokenType)
     async create(@Args('input') input: UserInput): Promise<userToken>{
         return await this.userservice.signup(input);
-        // return "hello";
     }
+    @Mutation(()=> UserTokenType)
+    async login(@Args('input') input: loginInput): Promise<userToken>{
+        return await this.userservice.login(input);
+    }
+
 }
