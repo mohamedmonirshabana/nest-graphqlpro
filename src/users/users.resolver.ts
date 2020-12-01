@@ -14,8 +14,8 @@ export class UserResolver{
         return "Hello";
     }
 
-    @Mutation(() =>UserTokenType)
-    async create(@Args('input') input: UserInput): Promise<userToken>{
+    @Mutation(() =>UserType)
+    async create(@Args('input') input: UserInput): Promise<User>{
         return await this.userservice.signup(input);
     }
     @Mutation(()=> UserTokenType)

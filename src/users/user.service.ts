@@ -18,7 +18,7 @@ export class UserService{
         private jwtService: JwtService
         ){}
 
-    async signup(userdto: UserInput):Promise<userToken> {
+    async signup(userdto: UserInput):Promise<User> {
         const user = await this.userModel.findOne({email: userdto.email});
         if(user){
             throw new UnauthorizedException('Email is  Exist');
@@ -30,16 +30,16 @@ export class UserService{
             email: userdto.email,
             password: encryptPassword
         });
-         await userdata.save();
-        const token = await this.jwtService.signAsync({
-            email: userdata.email,
-            id: userdata._id
-        },
-        {
-            expiresIn: '1d'
-        }
-        );
-        return {token: token};
+         return await userdata.save();
+        // const token = await this.jwtService.signAsync({
+        //     email: userdata.email,
+        //     id: userdata._id
+        // },
+        // {
+        //     expiresIn: '1d'
+        // }
+        // );
+        // return {token: token};
         // return await this.userModel.create(userdto);
     }
 
