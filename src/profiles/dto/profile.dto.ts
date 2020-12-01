@@ -1,6 +1,6 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
-@ObjectType()
+@ObjectType('uploadUserProfilePhoto')
 export class ProfileType{
     @Field(type => ID)
     id: string;
