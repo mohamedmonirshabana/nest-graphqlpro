@@ -6,7 +6,8 @@ import { UserModule } from './users/users.module';
 @Module({
   imports: [ 
     GraphQLModule.forRoot({
-    autoSchemaFile: true
+    autoSchemaFile: true,
+    context:({req}) => ({headers: req.headers}),
   }),
     MongooseModule.forRoot('mongodb://localhost/onlineBookStore'),
     UserModule

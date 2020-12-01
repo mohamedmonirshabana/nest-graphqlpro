@@ -61,4 +61,13 @@ export class UserService{
         return {token};
 
     }
+
+    // async validateUserById(userId: string): Promise<Boolean>{
+    //     const user = await this.userModel.findById(userId);
+    //     if(user){
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    // }
 }
